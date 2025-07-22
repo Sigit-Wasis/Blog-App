@@ -1,0 +1,86 @@
+@extends('layouts.app')
+@section('content')
+    <div class="row">
+        <div class="col-sm-6">
+            <h3 class="mb-0 font-weight-bold">Halaman Blog</h3>
+            <p>Halaman untuk mengelola blog.</p>
+        </div>
+        <div class="col-sm-6">
+            <div class="d-flex align-items-center justify-content-md-end">
+                <div class="mb-3 mb-xl-0 pr-1">
+                    <div class="dropdown">
+                        <button class="btn bg-white btn-sm dropdown-toggle btn-icon-text border mr-2" type="button"
+                            id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="typcn typcn-calendar-outline mr-2"></i>Last 7 days
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuSizeButton3" data-x-placement="top-start">
+                            <h6 class="dropdown-header">Last 14 days</h6>
+                            <a class="dropdown-item" href="#">Last 21 days</a>
+                            <a class="dropdown-item" href="#">Last 28 days</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="pr-1 mb-3 mr-2 mb-xl-0">
+                    <button type="button" class="btn btn-sm bg-white btn-icon-text border"><i
+                            class="typcn typcn-arrow-forward-outline mr-2"></i>Export</button>
+                </div>
+                <div class="pr-1 mb-3 mb-xl-0">
+                    <a href="{{ route('blog.create') }}" class="btn btn-sm text-white bg-success btn-icon-text border">
+                        <i class="typcn typcn-document-add mr-2"></i>
+                        Tambah
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-12 grid-margin mt-3 stretch-card">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        Judul
+                                    </th>
+                                    <th>
+                                        Kategori
+                                    </th>
+                                    <th>
+                                        Dibuat Oleh
+                                    </th>
+                                    <th>
+                                        Dibuat Pada
+                                    </th>
+                                    <th>
+                                        Aksi
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        Programming
+                                    </td>
+                                    <td>
+                                        Pemrograman
+                                    </td>
+                                    <td>
+                                        Herman Beck
+                                    </td>
+                                    <td>
+                                        May 15, 2015
+                                    </td>
+                                    <td>
+                                        <button type="button" class="btn btn-sm bg-info text-white">Edit</button>
+                                        <button type="button" class="btn btn-sm bg-danger text-white">Hapus</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
