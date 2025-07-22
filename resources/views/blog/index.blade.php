@@ -64,11 +64,11 @@
                                 @forelse ($blogs as $blog)
                                     <tr>
                                         <td class="py-1">
-                                            <img src="{{ url('assets/images/blog/' . $blog->gambar) }}" alt="image">
+                                            <img src="{{ url($blog->image) }}" alt="image">
                                         </td>
-                                        <td>{{ $blog->judul }}</td>
-                                        <td>{{ $blog->kategori_blog->kategori }}</td>
-                                        <td>{{ $blog->user->name }}</td>
+                                        <td>{{ $blog->title }}</td>
+                                        <td>{{ $blog->kategori }}</td>
+                                        <td>{{ $blog->author }}</td>
                                         <td>{{ $blog->created_at }}</td>
                                         <td>
                                             <a href="{{ route('blog.edit', $blog->id) }}"

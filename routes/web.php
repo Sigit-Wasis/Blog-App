@@ -4,13 +4,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\KategoriBlogController;
 use App\Http\Controllers\BlogController;
+use App\Http\Controllers\BerandaController;
 use App\Http\Controllers\DashboardController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
+
+Route::get('/', [BerandaController::class, 'index'])->name('beranda');
+Route::get('/blog/show/{slug}', [BerandaController::class, 'show'])->name('beranda.show');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
