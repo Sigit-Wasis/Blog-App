@@ -79,15 +79,6 @@
                 <span class="menu-title">User </span>
             </a>
         </li>
-        <li class="nav-item">
-            <a href="#" class="nav-link" id="logout-button">
-                <i class="typcn typcn-power menu-icon"></i>
-                <span class="menu-title">Logout</span>
-            </a>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-            </form>
-        </li>
     </ul>
 
 </nav>

@@ -61,14 +61,21 @@
                                         <td>{{ $user->jenis_kelamin }}</td>
                                         <td>{{ $user->created_at }}</td>
                                         <td>
-                                            <button type="button" class="btn btn-sm bg-info text-white">
-                                                <i class="typcn typcn-edit"></i>
-                                                Edit
-                                            </button>
-                                            <button type="button" class="btn btn-sm bg-danger text-white">
-                                                <i class="typcn typcn-trash"></i>
-                                                Hapus
-                                            </button>
+                                            <a href="{{ route('user.edit', $user->id) }}"
+                                                class="btn btn-sm bg-info text-white">
+                                                <i class="typcn typcn-edit"></i> Edit
+                                            </a>
+
+                                            <form action="{{ route('user.destroy', $user->id) }}" method="POST"
+                                                style="display:inline-block;"
+                                                onsubmit="return confirm('Yakin ingin menghapus user ini?')">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm bg-danger text-white">
+                                                    <i class="typcn typcn-trash"></i> Hapus
+                                                </button>
+                                            </form>
+
                                         </td>
                                     </tr>
                                 @empty

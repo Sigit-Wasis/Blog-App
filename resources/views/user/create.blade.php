@@ -43,6 +43,13 @@
                             <input type="password" class="form-control" id="password" name="password" placeholder="Password">
                         </div>
                         <div class="form-group">
+                            <label for="password_confirmation">Konfirmasi Password</label>
+                            <input type="password" class="form-control {{ $errors->has('password_confirmation') ? 'is-invalid' : '' }}" id="password_confirmation" name="password_confirmation" placeholder="Konfirmasi Password">
+                            <div class="invalid-feedback">
+                                {{ $errors->first('password_confirmation') }}
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label for="jenis_kelamin">Jenis Kelamin</label>
                             <select class="form-control" id="jenis_kelamin" name="jenis_kelamin">
                                 <option value="laki-laki">Laki-Laki</option>
