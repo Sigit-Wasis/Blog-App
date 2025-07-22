@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\KategoriBlogController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\DashboardController;
 
@@ -20,4 +21,15 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/blog', [BlogController::class, 'index'])->name('blog');
     Route::get('/blog/create', [BlogController::class, 'create'])->name('blog.create');
+    Route::post('/blog/store', [BlogController::class, 'store'])->name('blog.store');
+    Route::get('/blog/edit/{id}', [BlogController::class, 'edit'])->name('blog.edit');
+    Route::post('/blog/update/{id}', [BlogController::class, 'update'])->name('blog.update');
+    Route::delete('/blog/destroy/{id}', [BlogController::class, 'destroy'])->name('blog.destroy');
+
+    Route::get('/kategori', [KategoriBlogController::class, 'index'])->name('kategori_blog.index');
+    Route::get('/kategori/create', [KategoriBlogController::class, 'create'])->name('kategori_blog.create');
+    Route::post('/kategori/store', [KategoriBlogController::class, 'store'])->name('kategori_blog.store');
+    Route::get('/kategori/edit/{id}', [KategoriBlogController::class, 'edit'])->name('kategori_blog.edit');
+    Route::post('/kategori/update/{id}', [KategoriBlogController::class, 'update'])->name('kategori_blog.update');
+    Route::delete('/kategori/destroy/{id}', [KategoriBlogController::class, 'destroy'])->name('kategori_blog.destroy');
 });

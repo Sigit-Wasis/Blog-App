@@ -18,43 +18,37 @@
 
         <div class="col-12 grid-margin stretch-card mt-3">
             <div class="card">
-                {{-- Read Error --}}
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-
                 <div class="card-body">
-                    <form action="{{ route('blog.store') }}" method="POST" enctype="multipart/form-data">
+                    {{-- Blog edit --}}
+                    <form action="{{ route('blog.update', $blog->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
-                            <label for="judul">Judul</label>
-                            <input type="text" class="form-control" id="judul" name="title" required>
+                            <label for="title">Judul</label>
+                            <input type="text" class="form-control" name="title" id="title"
+                                value="{{ $blog->title }}">
                         </div>
                         <div class="form-group">
                             <label for="kategori_id">Kategori</label>
                             <select name="kategori_id" id="kategori_id" class="form-control">
                                 <option value="">Pilih Kategori</option>
                                 @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">{{ $category->kategori }}</option>
+                                    <option value="{{ $category->id }}"
+                                        {{ $blog->kategori_id == $category->id ? 'selected' : '' }}>
+                                        {{ $category->kategori }}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="form-group">
-                            <label for="isi">Isi</label>
-                            <textarea class="form-control" id="isi" name="content" rows="4" required></textarea>
+                            <label for="content">Content</label>
+                            <textarea class="form-control" name="content" id="content" rows="4">{{ $blog->content }}</textarea>
                         </div>
                         <div class="form-group">
-                            <label for="gambar">Gambar</label>
-                            <input type="file" class="form-control" id="gambar" name="image">
+                            <label for="image">Image</label>
+                            <input type="file" class="form-control" name="image" id="image">
                         </div>
                         <button type="submit" class="btn btn-primary mr-2">Simpan</button>
-                        <button class="btn btn-light">Batal</button>
+                        <button class="btn btn-light">Cancel</button>
                     </form>
                 </div>
             </div>

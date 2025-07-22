@@ -25,7 +25,7 @@
                             class="typcn typcn-arrow-forward-outline mr-2"></i>Export</button>
                 </div>
                 <div class="pr-1 mb-3 mb-xl-0">
-                    <a href="{{ route('blog.create') }}" class="btn btn-sm text-white bg-success btn-icon-text border">
+                    <a href="{{ route('kategori_blog.create') }}" class="btn btn-sm text-white bg-success btn-icon-text border">
                         <i class="typcn typcn-document-add mr-2"></i>
                         Tambah
                     </a>
@@ -41,19 +41,10 @@
                             <thead>
                                 <tr>
                                     <th>
-                                        Gambar
-                                    </th>
-                                    <th>
-                                        Judul
-                                    </th>
-                                    <th>
                                         Kategori
                                     </th>
                                     <th>
-                                        Dibuat Oleh
-                                    </th>
-                                    <th>
-                                        Dibuat Pada
+                                        Keterangan
                                     </th>
                                     <th>
                                         Aksi
@@ -61,23 +52,18 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @forelse ($blogs as $blog)
+                                @forelse ($kategori_blog as $kategori)
                                     <tr>
-                                        <td class="py-1">
-                                            <img src="{{ url('assets/images/blog/' . $blog->gambar) }}" alt="image">
-                                        </td>
-                                        <td>{{ $blog->judul }}</td>
-                                        <td>{{ $blog->kategori_blog->kategori }}</td>
-                                        <td>{{ $blog->user->name }}</td>
-                                        <td>{{ $blog->created_at }}</td>
+                                        <td>{{ $kategori->kategori }}</td>
+                                        <td>{{ $kategori->keterangan }}</td>
                                         <td>
-                                            <a href="{{ route('blog.edit', $blog->id) }}"
+                                            <a href="{{ route('kategori_blog.edit', $kategori->id) }}"
                                                 class="btn btn-sm bg-info text-white">
                                                 <i class="typcn typcn-edit"></i>
                                                 Edit
                                             </a>
-                                            <form action="{{ route('blog.destroy', $blog->id) }}" method="POST"
-                                                class="d-inline">
+                                            <form action="{{ route('kategori_blog.destroy', $kategori->id) }}"
+                                                method="POST" class="d-inline">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-sm bg-danger text-white">
@@ -89,7 +75,7 @@
                                     </tr>
                                 @empty
                                     <tr>
-                                        <td colspan="6" class="text-center">
+                                        <td colspan="3" class="text-center">
                                             Data Kosong
                                         </td>
                                     </tr>

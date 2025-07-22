@@ -61,6 +61,12 @@
                 <span class="menu-title">Dashboard </span>
             </a>
         </li>
+        <li class="nav-item {{ Route::is('kategori') || Route::is('kategori_blog.create') ? 'active' : '' }}">
+            <a class="nav-link" href="{{ route('kategori_blog.index') }}">
+                <i class="typcn typcn-clipboard menu-icon"></i>
+                <span class="menu-title">Kategori Blog </span>
+            </a>
+        </li>
         <li class="nav-item {{ Route::is('blog') || Route::is('blog.create') ? 'active' : '' }}">
             <a class="nav-link" href="{{ route('blog') }}">
                 <i class="typcn typcn-clipboard menu-icon"></i>
