@@ -18,6 +18,6 @@ class BerandaController extends Controller
     {
         $blog = Blog::where('slug', $slug)->firstOrFail();
 
-        return view('blog.show', compact('blog'));
+        return view('blog_detail', compact('blog'));
     }
 }

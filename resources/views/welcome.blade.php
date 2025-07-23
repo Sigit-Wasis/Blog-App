@@ -2,81 +2,121 @@
 <html lang="id">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blog Keren</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Artikel</title>
     <style>
-        .hero {
-            background: linear-gradient(to right, #0d6efd, #6610f2);
-            color: white;
-            padding: 100px 0;
-            text-align: center;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f4f4f4;
         }
 
-        .card-img-top {
-            height: 300px;
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            padding: 40px 20px;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+        }
+
+        .card img {
+            width: 100%;
+            height: 200px;
             object-fit: cover;
+        }
+
+        .card-body {
+            padding: 15px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0 0 10px;
+            color: #222;
+        }
+
+        .card-text {
+            flex-grow: 1;
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 15px;
+        }
+
+        .card a {
+            text-decoration: none;
+            background-color: #0d6efd;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .card a:hover {
+            background-color: #0b5ed7;
+        }
+
+        .lead {
+            text-align: center;
+            margin-top: -20px;
+            margin-bottom: 30px;
+            color: #777;
+            font-size: 16px;
+            line-height: 1.6;
         }
     </style>
 </head>
 
 <body>
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark shadow-sm">
-        <div class="container">
-            <a class="navbar-brand" href="#">MyBlog</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <h1 class="display-4 fw-bold">Selamat Datang di MyBlog</h1>
-            <p class="lead">Berbagi cerita, tips coding, dan inspirasi setiap minggu.</p>
-            <a href="#articles" class="btn btn-light btn-lg mt-3">Lihat Artikel</a>
-        </div>
-    </section>
-
-    <!-- Artikel Terbaru -->
-    <section id="articles" class="py-5">
-        <div class="container">
-            <h2 class="mb-4 text-center">Artikel Terbaru</h2>
-            <div class="row g-4">
-                @forelse ($blogs as $blog)
-                    <div class="col-md-4">
-                        <div class="card h-100 shadow-sm">
-                            <img src="{{ url($blog->image) }}" class="card-img-top" alt="{{ $blog->title }}" />
-                            <div class="card-body">
-                                <h5 class="card-title">{{ $blog->title }}</h5>
-                                <p class="card-text">{{ \Illuminate\Support\Str::limit(strip_tags($blog->content), 100) }}</p>
-                                <a href="{{ route('beranda.show', $blog->slug) }}" class="btn btn-primary">Baca Selengkapnya</a>
-                            </div>
-                        </div>
+    <div class="container">
+        <h2>Artikel Terbaru</h2>
+        <p class="lead">Artikel terbaru tentang teknologi dan kehidupan digital</p>
+        <div class="grid">
+            @forelse ($blogs as $blog)
+                <div class="card">
+                    <img src="{{ url($blog->image) }}" alt="Judul Artikel">
+                    <div class="card-body">
+                        <h3 class="card-title">{{ $blog->title }}</h3>
+                        <p class="card-text">{{ Str::limit($blog->content, 100) }}</p>
+                        <a href="{{ route('beranda.show', $blog->slug) }}">Baca Selengkapnya</a>
                     </div>
-                @empty
-                    <div class="col-12 text-center">
-                        <p>Belum ada artikel tersedia.</p>
-                    </div>
-                @endforelse
-            </div>
+                </div>
+            @empty
+                <p>Tidak ada artikel yang tersedia.</p>
+            @endforelse
         </div>
-    </section>
+    </div>
 
-
-    <!-- Footer -->
-    <footer class="bg-dark text-white py-4 mt-5">
-        <div class="container text-center">
-            <p class="mb-0">© 2025 MyBlog. Dibuat dengan ❤️ dan Bootstrap 5.</p>
-        </div>
-    </footer>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

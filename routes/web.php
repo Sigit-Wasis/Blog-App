@@ -10,7 +10,7 @@ use App\Http\Controllers\DashboardController;
 Auth::routes();
 
 Route::get('/', [BerandaController::class, 'index'])->name('beranda');
-Route::get('/blog/show/{slug}', [BerandaController::class, 'show'])->name('beranda.show');
+Route::get('/show/{slug}', [BerandaController::class, 'show'])->name('beranda.show');
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
