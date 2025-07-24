@@ -93,6 +93,51 @@
             font-size: 16px;
             line-height: 1.6;
         }
+
+        .pagination {
+            display: flex;
+            justify-content: center;
+            padding: 1rem 0;
+            list-style: none;
+            border-radius: 0.5rem;
+            gap: 0.5rem;
+        }
+
+        .page-item {
+            transition: transform 0.2s ease-in-out;
+        }
+
+        .page-item:hover {
+            transform: scale(1.05);
+        }
+
+        .page-link {
+            color: #4a5568;
+            /* abu-abu gelap */
+            border: 1px solid #e2e8f0;
+            /* abu-abu terang */
+            padding: 0.5rem 0.75rem;
+            border-radius: 0.375rem;
+            background-color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+
+        .page-item.disabled .page-link {
+            color: #a0aec0;
+            pointer-events: none;
+            background-color: #edf2f7;
+            border-color: #e2e8f0;
+        }
+
+        .page-item.active .page-link {
+            color: #fff;
+            background-color: #3182ce;
+            /* biru */
+            border-color: #3182ce;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -115,6 +160,8 @@
                 <p>Tidak ada artikel yang tersedia.</p>
             @endforelse
         </div>
+        {{-- paginate --}}
+        {{ $blogs->links() }}
     </div>
 
 </body>

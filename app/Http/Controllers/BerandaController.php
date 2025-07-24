@@ -9,7 +9,7 @@ class BerandaController extends Controller
 {
     public function index()
     {
-        $blogs = Blog::latest()->take(6)->get(); // ambil 6 blog terbaru
+        $blogs = Blog::latest()->paginate(2); // ambil 6 blog terbaru
 
         return view('welcome', compact('blogs'));
     }
