@@ -146,6 +146,14 @@
     <div class="container">
         <h2>Artikel Terbaru</h2>
         <p class="lead">Artikel terbaru tentang teknologi dan kehidupan digital</p>
+        <form action="{{ route('beranda') }}" method="GET" style="margin-bottom: 30px; text-align: center;">
+            <input type="text" name="search" placeholder="Cari artikel..." value="{{ request('search') }}"
+                style="padding: 10px; width: 60%; max-width: 400px; border: 1px solid #ccc; border-radius: 5px;">
+            <button type="submit"
+                style="padding: 10px 20px; background-color: #0d6efd; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                Cari
+            </button>
+        </form>
         <div class="grid">
             @forelse ($blogs as $blog)
                 <div class="card">

@@ -7,9 +7,14 @@ use App\Models\Blog;
 
 class BerandaController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $blogs = Blog::latest()->paginate(2); // ambil 6 blog terbaru
+        $search = $request->input('search');
+
+        $blogs = Blog::when($search, function ($query, $search) {
+            return $query->where('title', 'like', "%{$search}%")
+                        ->orWhere('content', 'like', "%{$search}%");
+        })->latest()->paginate(8);
 
         return view('welcome', compact('blogs'));
     }
